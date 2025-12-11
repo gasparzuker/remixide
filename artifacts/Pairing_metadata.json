@@ -18,7 +18,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"verifier.sol": "Pairing"
+			"merkleInclusionVerifier.sol": "Pairing"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -32,11 +32,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"verifier.sol": {
-			"keccak256": "0x4e477a2bc8cea7d9e1ee659435856515645a00ec6cc0733d573c5db987faeab4",
+		"merkleInclusionVerifier.sol": {
+			"keccak256": "0xe6d1ed546a72ee39aa5798acddfe594c51e372038be4d8468949d16d14f8e4a5",
 			"urls": [
-				"bzz-raw://912164cc9adf312b94bb45fca5cca9636afb5f9ca938b662293e0316ac6a0e69",
-				"dweb:/ipfs/QmUiuTH6WVK4ArezxausYC5UE8mj64GSQFnuHg9KTuT8AG"
+				"bzz-raw://d45d34ebbb671c67c272231b585a82eb5460d06bc2a589145f8813193976700e",
+				"dweb:/ipfs/Qmce5mZhmk9rcaafjnJscYdA3f8vvSFMNe7BYJscofFPHz"
 			]
 		}
 	},

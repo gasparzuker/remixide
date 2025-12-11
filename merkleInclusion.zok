@@ -1,6 +1,0 @@
-// Example from https://zokrates.github.io/gettingstarted.html
-
-def main(private field a, field b) {
-	assert(a * a == b);
-	return;
-}
