@@ -1,0 +1,46 @@
+def pow_mod(u32 base, u32 exp, u32 modulus) -> u32 {
+    u32 result = 1;
+    u32 b = base % modulus;
+    u32 e = exp;
+
+    while e > 0 {
+        if (e & 1u32 == 1u32) {
+            result = (result * b) % modulus;
+        }
+        b = (b * b) % modulus;
+        e = e >> 1;
+    }
+
+    result
+}
+
+def main(
+    private bool vote,
+    private u32 r,
+
+    u32 g,
+    u32 h,
+    u32 p,
+
+    u32 c1,
+    u32 c2
+) {
+    // bool → bit
+    u32 m = 0;
+    if (vote) {
+        m = 1;
+    }
+
+    // voto binario
+    assert(m * (m - 1) == 0);
+
+    // g^m (optimizado)
+    u32 gm = 1;
+    if (m == 1) {
+        gm = g;
+    }
+
+    // ElGamal
+    assert(c1 == pow_mod(g, r, p));
+    assert(c2 == (pow_mod(h, r, p) * gm) % p);
+}
