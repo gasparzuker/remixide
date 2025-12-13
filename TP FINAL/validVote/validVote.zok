@@ -1,7 +1,0 @@
-import "hashes/sha256/sha256Padded";
-
-def main(bool vote, u32 salt, ) {
-    ;
-    assert(hash == expected_hash);
-    return;
-}

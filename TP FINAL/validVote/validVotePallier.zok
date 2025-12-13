@@ -1,0 +1,38 @@
+def pow_mod(u32 base, u32 exp, u32 modulus) -> u32 {
+    u32 result = 1;
+    u32 b = base % modulus;
+    u32 e = exp;
+
+    while e > 0 {
+        if (e & 1u32 == 1u32) {
+            result = (result * b) % modulus;
+        }
+        b = (b * b) % modulus;
+        e = e >> 1;
+    }
+
+    result
+}
+
+def main(private bool vote, private u32 randomValue, u32[2] pubKey, u32[8] encryptedBallot) {
+    u32 n = pubKey[0];
+    u32 n2 = n * n;
+    u32 g = pubKey[1];
+
+    //Cambio booleano a entero
+    u32 m = 0; 
+    if (vote) {
+    m = 1;
+    }
+
+    assert(randomValue != 0);
+    assert(randomValue < n); //Esto ahorra hacer (gcd(r,n) == 1) para n producto de primos grandes)
+ 
+
+    u32 rn = pow_mod(r, n, n2);
+    u32 calculatedBallot = (g*m * rn) % n2 //Formula de encriptación de Pallier
+    
+    
+    assert(calculatedBallot == encryptedBallot);
+    return;
+}
