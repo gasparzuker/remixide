@@ -4,7 +4,7 @@ def pow_mod(u32 base, u32 exp, u32 modulus) -> u32 {
     u32 e = exp;
 
     while e > 0 {
-        if (e & 1u32 == 1u32) {
+        if (e & 1u32 == 1u32) { //Chequea si el exponente es impar
             result = (result * b) % modulus;
         }
         b = (b * b) % modulus;
