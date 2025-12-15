@@ -1,0 +1,13 @@
+import "ecc/babyjubjubParams" as Params;
+import "ecc/edwardsScalarMult" as ecMul;
+import "utils/casts/u32_array_to_bool_array.zok" as cast;
+
+
+def main(
+    private u32[8] x, field[2] G    // clave privada como 256 bits
+) -> field[2] {
+
+    bool[256] scalarBits = cast(x);
+    field[2] H = ecMul(scalarBits, G, Params());
+    return H;
+}
