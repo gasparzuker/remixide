@@ -1,0 +1,11 @@
+import "ecc/babyjubjubParams" as Params;
+import "ecc/edwardsAdd" as ecAdd;
+
+
+def main(
+    private field[2] a, field[2] b    // clave privada como 256 bits
+) -> field[2] {
+
+    field[2] res = ecAdd(a, b, Params());
+    return res;
+}

@@ -7,6 +7,7 @@ import "hashes/utils/256bitsDirectionHelper" as multiplex;
 import "ecc/babyjubjubParams" as Params;
 import "ecc/edwardsAdd" as ecAdd;
 import "ecc/edwardsScalarMult" as ecMul;
+import "utils/casts/u32_array_to_bool_array.zok" as castBool;
 
 // Merkle Inclusion
 const u32 DEPTH = 2;
@@ -32,42 +33,43 @@ def checkMerkleInclusion(u32[8] token, bool[DEPTH] directionSelector, u32[DEPTH]
     return isEqual;
 }
 
-struct Point{
-    field x;
-    field y;
-}
-
 //Valid Vote
+// Generador
+const field Gx = 16540640123574156134436876038791482806971768689494387082833631921987005038935;
+const field Gy = 20819045374670962167435360035096875258406992893633759881276124905556507972311;
  // Clave pública
-const field Hx = 16142091703924503772780067265669780561498485135382805743846124708954689813034911006852326328839918222838196966452269891008793626011888116387645890115679;
-const field Hy = 16142091703924503772780067265669780561498485135382805743846124708954689813034911006852326328839918222838196966452269891008793626011888116387645890115679;
+const field Hx = 7969675444573445291254622559023369493920665323648612187875141013093511707518;
+const field Hy = 8057175911947644091103170903473043512930444048936190590138100717511025277267;
 
 def validVote(
     // --- PUBLICOS --- 
     // Estos valores van a ser los que se guarden en el smart contract, sumados con los demas votos y luego desencriptados por la private key para calcular el total
-    Point C1,     // rG
-    Point C2,     // mG + rH
+    field[2] C1,     // rG
+    field[2] C2,     // mG + rH
 
     // --- PRIVADOS ---
-    field r,
+    u32[8] r,
     bool vote      // voto (0 o 1)
 ) -> bool {
-    field m = if vote { 1 } else { 0 };
+    bool[256] mut  m = [false; 256];
+    m[255] = if vote {true} else {false};
+    field[2] G = [Gx, Gy];
+    field[2] H = [Hx, Hy];
 
-    
-    Point G = Params.g;
-    Point H = 
+    bool[256] rbits = castBool(r);
+    field[2] rG = ecMul(rbits,G,Params());
 
-    assert(rG.x == C1.x);
-    assert(rG.y == C1.y);
+    assert(rG[0] == C1[0]);
+    assert(rG[1] == C1[1]);
 
-    Point rH = ecMul(r, H);
+    bool[256] rbits = castBool(r);
+    field[2] rH = ecMul(rbits, H, Params());
 
-    Point mG = ecMul(m, G);
-    Point expectedC2 = ecAdd(mG, rH);
+    field[2] mG = ecMul(m, G, Params());
+    field[2] expectedC2 = ecAdd(mG, rH, Params());
 
-    assert(expectedC2.x == C2.x);
-    assert(expectedC2.y == C2.y);
+    assert(expectedC2[0] == C2[0]);
+    assert(expectedC2[1] == C2[1]);
     return true;
 }
 
@@ -82,19 +84,21 @@ def main(
     //Parametros para ValidVote
 
     //Publicos
-    Point c1,
-    Point c2,
+    field[2] c1,
+    field[2] c2,
 
     //Privados
     private bool vote,
-    private u32 r,
+    private u32[8] r,
 
     //Para el nullifier
-    private field nullifier //TO DO
+    private u32[8] nullifier //TO DO
     ){
     
     assert(checkMerkleInclusion(token, directionSelector, path));
-    assert(validVote(C1, C2, r, vote));
-    assert(nullifier == hash(token, g)); // Lo hago de esta manera ya que el nullifier es público, para que no se pueda saber fácilmente que hojas del árbol votaron.
-    return true;
+    assert(validVote(c1, c2, r, vote));
+    
+    //Para que no se sepa de que hoja es el voto
+    u32[8] nullifier_mask = [0x01234567,0x89abcdef,0x01234567,0x89abcdef,0x01234567,0x89abcdef,0x01234567,0x89abcdef];
+    assert(nullifier == hash(token, nullifier_mask));
 }
