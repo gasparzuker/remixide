@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.30+commit.73712a01"
+		"version": "0.8.31+commit.fd3a2265"
 	},
 	"language": "Solidity",
 	"output": {
@@ -18,9 +18,9 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"merkleInclusionVerifier.sol": "Pairing"
+			"verifier.sol": "Pairing"
 		},
-		"evmVersion": "prague",
+		"evmVersion": "osaka",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -32,11 +32,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"merkleInclusionVerifier.sol": {
-			"keccak256": "0xe6d1ed546a72ee39aa5798acddfe594c51e372038be4d8468949d16d14f8e4a5",
+		"verifier.sol": {
+			"keccak256": "0xc42aefa93a53b4fe2ae7f8c8e0071f9c7bed77e8fe8ed5efa05493ad5ccdf36f",
 			"urls": [
-				"bzz-raw://d45d34ebbb671c67c272231b585a82eb5460d06bc2a589145f8813193976700e",
-				"dweb:/ipfs/Qmce5mZhmk9rcaafjnJscYdA3f8vvSFMNe7BYJscofFPHz"
+				"bzz-raw://f13f2fa3ed9f80998155f0ddf07f9113bd717ebea02112073a6d3d51947b09d8",
+				"dweb:/ipfs/QmbM6eVwg8YPwzvLdmghAxRsdAd7peahWCswzdWm7wQkyv"
 			]
 		}
 	},

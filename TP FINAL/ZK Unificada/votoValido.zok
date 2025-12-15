@@ -92,7 +92,7 @@ def main(
     private u32[8] r,
 
     //Para el nullifier
-    private u32[8] nullifier //TO DO
+    private u32[8] nullifier // token * Gx
     ){
     
     assert(checkMerkleInclusion(token, directionSelector, path));
