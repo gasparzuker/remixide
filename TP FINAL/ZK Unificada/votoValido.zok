@@ -49,10 +49,10 @@ def validVote(
 
     // --- PRIVADOS ---
     u32[8] r,
-    bool vote      // voto (0 o 1)
+    bool vote      // voto (0 o 1)  
 ) -> bool {
     bool[256] mut  m = [false; 256];
-    m[255] = if vote {true} else {false};
+    m[255] = vote;
     field[2] G = [Gx, Gy];
     field[2] H = [Hx, Hy];
 
