@@ -8,9 +8,14 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "_root",
-						"type": "uint256"
+						"internalType": "address",
+						"name": "_voteVerifier",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_recountVerifier",
+						"type": "address"
 					}
 				],
 				"stateMutability": "nonpayable",
@@ -18,17 +23,17 @@
 			},
 			{
 				"anonymous": false,
+				"inputs": [],
+				"name": "ElectionClosed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
 				"inputs": [
 					{
 						"indexed": false,
 						"internalType": "uint256",
-						"name": "votes0",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "votes1",
+						"name": "result",
 						"type": "uint256"
 					}
 				],
@@ -41,13 +46,13 @@
 					{
 						"indexed": false,
 						"internalType": "uint256[2]",
-						"name": "c1",
+						"name": "C1",
 						"type": "uint256[2]"
 					},
 					{
 						"indexed": false,
 						"internalType": "uint256[2]",
-						"name": "c2",
+						"name": "C2",
 						"type": "uint256[2]"
 					},
 					{
@@ -57,8 +62,60 @@
 						"type": "uint256"
 					}
 				],
-				"name": "VoteEmitted",
+				"name": "VoteRegistered",
 				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "accC1x",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "accC1y",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "accC2x",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "accC2y",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
 			},
 			{
 				"inputs": [],
@@ -101,6 +158,19 @@
 			},
 			{
 				"inputs": [],
+				"name": "numberOfVotes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
 				"name": "owner",
 				"outputs": [
 					{
@@ -113,10 +183,87 @@
 				"type": "function"
 			},
 			{
-				"inputs": [],
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "result",
+						"type": "uint256"
+					},
+					{
+						"components": [
+							{
+								"components": [
+									{
+										"internalType": "uint256",
+										"name": "X",
+										"type": "uint256"
+									},
+									{
+										"internalType": "uint256",
+										"name": "Y",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct G1Point",
+								"name": "a",
+								"type": "tuple"
+							},
+							{
+								"components": [
+									{
+										"internalType": "uint256[2]",
+										"name": "X",
+										"type": "uint256[2]"
+									},
+									{
+										"internalType": "uint256[2]",
+										"name": "Y",
+										"type": "uint256[2]"
+									}
+								],
+								"internalType": "struct G2Point",
+								"name": "b",
+								"type": "tuple"
+							},
+							{
+								"components": [
+									{
+										"internalType": "uint256",
+										"name": "X",
+										"type": "uint256"
+									},
+									{
+										"internalType": "uint256",
+										"name": "Y",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct G1Point",
+								"name": "c",
+								"type": "tuple"
+							}
+						],
+						"internalType": "struct Proof",
+						"name": "proof",
+						"type": "tuple"
+					}
+				],
 				"name": "publishResults",
 				"outputs": [],
 				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "recountVerifier",
+				"outputs": [
+					{
+						"internalType": "contract IVerifier",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
 				"type": "function"
 			},
 			{
@@ -136,7 +283,7 @@
 										"type": "uint256"
 									}
 								],
-								"internalType": "struct Pairing.G1Point",
+								"internalType": "struct G1Point",
 								"name": "a",
 								"type": "tuple"
 							},
@@ -153,7 +300,7 @@
 										"type": "uint256[2]"
 									}
 								],
-								"internalType": "struct Pairing.G2Point",
+								"internalType": "struct G2Point",
 								"name": "b",
 								"type": "tuple"
 							},
@@ -170,29 +317,29 @@
 										"type": "uint256"
 									}
 								],
-								"internalType": "struct Pairing.G1Point",
+								"internalType": "struct G1Point",
 								"name": "c",
 								"type": "tuple"
 							}
 						],
-						"internalType": "struct Verifier.Proof",
+						"internalType": "struct Proof",
 						"name": "proof",
 						"type": "tuple"
 					},
 					{
-						"internalType": "uint256[4]",
-						"name": "publicInputs",
-						"type": "uint256[4]"
+						"internalType": "uint256[2]",
+						"name": "C1",
+						"type": "uint256[2]"
+					},
+					{
+						"internalType": "uint256[2]",
+						"name": "C2",
+						"type": "uint256[2]"
 					},
 					{
 						"internalType": "uint256",
 						"name": "nullifier",
 						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "vote",
-						"type": "bool"
 					}
 				],
 				"name": "registerVote",
@@ -202,115 +349,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "root",
+				"name": "voteVerifier",
 				"outputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "contract IVerifier",
 						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"components": [
-							{
-								"components": [
-									{
-										"internalType": "uint256",
-										"name": "X",
-										"type": "uint256"
-									},
-									{
-										"internalType": "uint256",
-										"name": "Y",
-										"type": "uint256"
-									}
-								],
-								"internalType": "struct Pairing.G1Point",
-								"name": "a",
-								"type": "tuple"
-							},
-							{
-								"components": [
-									{
-										"internalType": "uint256[2]",
-										"name": "X",
-										"type": "uint256[2]"
-									},
-									{
-										"internalType": "uint256[2]",
-										"name": "Y",
-										"type": "uint256[2]"
-									}
-								],
-								"internalType": "struct Pairing.G2Point",
-								"name": "b",
-								"type": "tuple"
-							},
-							{
-								"components": [
-									{
-										"internalType": "uint256",
-										"name": "X",
-										"type": "uint256"
-									},
-									{
-										"internalType": "uint256",
-										"name": "Y",
-										"type": "uint256"
-									}
-								],
-								"internalType": "struct Pairing.G1Point",
-								"name": "c",
-								"type": "tuple"
-							}
-						],
-						"internalType": "struct Verifier.Proof",
-						"name": "proof",
-						"type": "tuple"
-					},
-					{
-						"internalType": "uint256[4]",
-						"name": "input",
-						"type": "uint256[4]"
-					}
-				],
-				"name": "verifyTx",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "r",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "votes0",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "votes1",
-				"outputs": [
-					{
-						"internalType": "uint256",
-						"name": "",
-						"type": "uint256"
+						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -344,18 +388,27 @@
 		"remappings": []
 	},
 	"sources": {
-		"TP FINAL/VotingSystem.sol": {
-			"keccak256": "0xf09543e0e02c5ffb82df5d6b4d58b0659c8160908476714cdf63f1f6dbfe1ad2",
+		"TP FINAL/CurveBabyJubJub.sol": {
+			"keccak256": "0x24451e7ebca930e74683d41dd408a2847bab51dfd48bba072a0cc01c53b23cbb",
 			"urls": [
-				"bzz-raw://3451e523a5366c9485a6f0924ea4edef903a66eea8b9231215cc627ec5f46b14",
-				"dweb:/ipfs/QmXzbdEWXFaQdz4FZnK6qF7AqPHfiQEu99HUMBmEADQu29"
+				"bzz-raw://55207eeb3d415738ffc83ff7bf641c3599d6ecb8a8dbbc7a590a3df782af4fe1",
+				"dweb:/ipfs/QmPo1iz6rhppKFptEPAc4dJhyYczxbYRWG3dYyXyK22GQn"
 			]
 		},
-		"TP FINAL/verifier.sol": {
-			"keccak256": "0x41d000a03cee9d2ccee69fb17c4a16857f7dfee143cc7dfb3fe4b068c80cd8da",
+		"TP FINAL/IVerifier.sol": {
+			"keccak256": "0x6d45710dce729b7f107e147b18a32b21aca6883d5a0f986c5fe580e1c93f7533",
+			"license": "GPL-3.0",
 			"urls": [
-				"bzz-raw://e46686f38df0f7d5cb8bf659245bf51e12ad81262b34e9716e85d1d5689e2c83",
-				"dweb:/ipfs/QmTgeQvZ3gdHMcqKosjo8XwBpvQZwFftKZVY5aw4LbbwJB"
+				"bzz-raw://50824f2ea7619342945f71b94ea5ecb4778b4ecebfdf6fa4d7fe51b543438963",
+				"dweb:/ipfs/QmR6U7dVVo3reirocPNiqJPARU457jHEUi76TD83MuuEVY"
+			]
+		},
+		"TP FINAL/VotingSystem.sol": {
+			"keccak256": "0x596ddeec74c48721459c3a146c62365e05c03ffbf1cc5db82ac203bb28826f48",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://828a2e06499a8067eb5c67ff1d1dcb446294e5af664dd9d31f37c7ea5f368e0a",
+				"dweb:/ipfs/QmPWMzaTWgameeLBB2jn3geQ2sAyDCKZ9cPDXnDZy5iNNv"
 			]
 		}
 	},

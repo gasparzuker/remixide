@@ -22,7 +22,7 @@
 										"type": "uint256"
 									}
 								],
-								"internalType": "struct Pairing.G1Point",
+								"internalType": "struct Pairing2.G1Point",
 								"name": "a",
 								"type": "tuple"
 							},
@@ -39,7 +39,7 @@
 										"type": "uint256[2]"
 									}
 								],
-								"internalType": "struct Pairing.G2Point",
+								"internalType": "struct Pairing2.G2Point",
 								"name": "b",
 								"type": "tuple"
 							},
@@ -56,12 +56,12 @@
 										"type": "uint256"
 									}
 								],
-								"internalType": "struct Pairing.G1Point",
+								"internalType": "struct Pairing2.G1Point",
 								"name": "c",
 								"type": "tuple"
 							}
 						],
-						"internalType": "struct Verifier.Proof",
+						"internalType": "struct VerifierRecuento.Proof",
 						"name": "proof",
 						"type": "tuple"
 					},
@@ -96,7 +96,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"TP FINAL/verifierRecuento.sol": "Verifier"
+			"TP FINAL/verifierRecuento.sol": "VerifierRecuento"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -111,10 +111,10 @@
 	},
 	"sources": {
 		"TP FINAL/verifierRecuento.sol": {
-			"keccak256": "0x346b3af7538e76c6d3427cddf6961657ddfee20f9711a60ba51737fa13ff78a5",
+			"keccak256": "0xb8eba3f47fbfdcaae61a09170dc7d4f2a788d55ed548f68115e799cbfa34b107",
 			"urls": [
-				"bzz-raw://7b655f4ca3d66a6da6e6325e8e98e0bb6217b91462a5a2ba548a08ac81909a4c",
-				"dweb:/ipfs/QmRA23c9nt8VjY7qpTGjdXJpQEvS72Cn5zR6zdTqrWhrhJ"
+				"bzz-raw://f822e21ce3ba7edbbbb013d228a1d01ff76166ed8e008aabbb536c45a57dd8fd",
+				"dweb:/ipfs/QmRmZyiE3BsPPoME6kMR5kMKXAEUQoiV9EPcHoUoyZLFKq"
 			]
 		}
 	},
