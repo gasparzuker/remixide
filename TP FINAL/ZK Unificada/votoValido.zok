@@ -52,7 +52,7 @@ def validVote(
     bool vote      // voto (0 o 1)  
 ) -> bool {
     bool[256] mut  m = [false; 256];
-    m[255] = vote;
+    m[0] = vote;
     field[2] G = [Gx, Gy];
     field[2] H = [Hx, Hy];
 
@@ -62,7 +62,6 @@ def validVote(
     assert(rG[0] == C1[0]);
     assert(rG[1] == C1[1]);
 
-    bool[256] rbits = castBool(r);
     field[2] rH = ecMul(rbits, H, Params());
 
     field[2] mG = ecMul(m, G, Params());

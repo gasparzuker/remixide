@@ -27,7 +27,8 @@ def select(bool condition, u32[8] left, u32[8] right) -> (u32[8], u32[8]) {
 
 // Merke-Tree inclusion proof for tree depth 3 using sha256
 // directionSelector => true if current digest is on the rhs of the hash
-def checkMerkleInclusion(u32[8] root, private u32[8] token, private bool[DEPTH] directionSelector, private u32[DEPTH][8] path) -> bool {
+def checkMerkleInclusion(u32[8] root, private u32[8] token, private 
+bool[DEPTH] directionSelector, private u32[DEPTH][8] path) -> bool {
     // Start from the leaf
     u32[8] leaf = leafHash(token);
     u32[8] mut digest = leaf;

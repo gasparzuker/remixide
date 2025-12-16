@@ -96,7 +96,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"TP FINAL/verifierRecuento.sol": "Verifier"
+			"TP FINAL/verifier.sol": "Verifier"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -110,11 +110,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"TP FINAL/verifierRecuento.sol": {
-			"keccak256": "0x346b3af7538e76c6d3427cddf6961657ddfee20f9711a60ba51737fa13ff78a5",
+		"TP FINAL/verifier.sol": {
+			"keccak256": "0x0cc04120bfa689b9108a656f303170396b55ece22a003495a3fee6ce86a26a2d",
 			"urls": [
-				"bzz-raw://7b655f4ca3d66a6da6e6325e8e98e0bb6217b91462a5a2ba548a08ac81909a4c",
-				"dweb:/ipfs/QmRA23c9nt8VjY7qpTGjdXJpQEvS72Cn5zR6zdTqrWhrhJ"
+				"bzz-raw://b5f75b62ec2b0ff34ba8bb63009342bb6fcb05e67896bc36dba5df33369faba5",
+				"dweb:/ipfs/QmatnZh7KXoTF9Nu7vSAhy2xaHt3H9NE5ffqyUKAdMtTe7"
 			]
 		}
 	},

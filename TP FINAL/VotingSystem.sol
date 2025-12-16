@@ -124,7 +124,7 @@ contract VotingSystem {
     // --------------------
 
     function publishResults(
-        uint256 result,
+        uint32[8] calldata result,
         Proof calldata proof
         
     ) external {
@@ -138,10 +138,17 @@ contract VotingSystem {
         inputs[1] = accC1y;
         inputs[2] = accC2x;
         inputs[3] = accC2y;
-        inputs[4] = result;
+        inputs[4] = result[0];
+        inputs[5] = result[1];
+        inputs[6] = result[2];
+        inputs[7] = result[3];
+        inputs[8] = result[4];
+        inputs[9] = result[5];
+        inputs[8] = result[6];
+        inputs[9] = result[7];
         bool ok = recountVerifier.verifyTx(proof, inputs);
         require(ok, "Invalid recount proof");
 
-        emit ResultsPublished(result);
+        emit ResultsPublished(result[7]); //Solo publicamos el ultimo ya que la cantidad de votos posible entra en un solo uint32
     }
 }

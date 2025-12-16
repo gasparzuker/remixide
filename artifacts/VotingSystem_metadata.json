@@ -185,9 +185,9 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "uint32[8]",
 						"name": "result",
-						"type": "uint256"
+						"type": "uint32[8]"
 					},
 					{
 						"components": [
@@ -404,11 +404,11 @@
 			]
 		},
 		"TP FINAL/VotingSystem.sol": {
-			"keccak256": "0x4881ed9b420cda3a57e4fb02641ab44a1c4cab58052c1607f2024f781b8536f6",
+			"keccak256": "0xd567f028b9416e964ebf225a4f31629252b818dd36eacd65fef95ef989ae8079",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://49fc157d2daf4d12800bff3e35dfd13a0029176290d662dd60567731b728d6c4",
-				"dweb:/ipfs/QmTwbPKNJyehHMpcCR9bK1JfqoNCPi2CETB7E9qiA1rXvN"
+				"bzz-raw://0e3480a583581269d00c38f90f59e773fdbe061e72177dd4bc6f042d64203639",
+				"dweb:/ipfs/QmTq3aMVaaQT6SHNcNFxL6eyqGdvQ8NkyfZq7xGgoaxqKC"
 			]
 		}
 	},
