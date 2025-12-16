@@ -57,9 +57,9 @@
 					},
 					{
 						"indexed": false,
-						"internalType": "uint256",
-						"name": "nullifier",
-						"type": "uint256"
+						"internalType": "bytes32",
+						"name": "nullifierHash",
+						"type": "bytes32"
 					}
 				],
 				"name": "VoteRegistered",
@@ -140,9 +140,9 @@
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
+						"internalType": "bytes32",
 						"name": "",
-						"type": "uint256"
+						"type": "bytes32"
 					}
 				],
 				"name": "nullifierUsed",
@@ -337,9 +337,9 @@
 						"type": "uint256[2]"
 					},
 					{
-						"internalType": "uint256",
+						"internalType": "uint32[8]",
 						"name": "nullifier",
-						"type": "uint256"
+						"type": "uint32[8]"
 					}
 				],
 				"name": "registerVote",
@@ -404,11 +404,11 @@
 			]
 		},
 		"TP FINAL/VotingSystem.sol": {
-			"keccak256": "0x596ddeec74c48721459c3a146c62365e05c03ffbf1cc5db82ac203bb28826f48",
+			"keccak256": "0x4881ed9b420cda3a57e4fb02641ab44a1c4cab58052c1607f2024f781b8536f6",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://828a2e06499a8067eb5c67ff1d1dcb446294e5af664dd9d31f37c7ea5f368e0a",
-				"dweb:/ipfs/QmPWMzaTWgameeLBB2jn3geQ2sAyDCKZ9cPDXnDZy5iNNv"
+				"bzz-raw://49fc157d2daf4d12800bff3e35dfd13a0029176290d662dd60567731b728d6c4",
+				"dweb:/ipfs/QmTwbPKNJyehHMpcCR9bK1JfqoNCPi2CETB7E9qiA1rXvN"
 			]
 		}
 	},

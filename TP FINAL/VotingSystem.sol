@@ -16,7 +16,7 @@ contract VotingSystem {
 
     uint256 public numberOfVotes;
 
-    mapping(uint256 => bool) public nullifierUsed;
+    mapping(bytes32 => bool) public nullifierUsed;
 
     IVerifier public voteVerifier;
     IVerifier public recountVerifier;
@@ -29,7 +29,7 @@ contract VotingSystem {
     event VoteRegistered(
         uint256[2] C1,
         uint256[2] C2,
-        uint256 nullifier
+        bytes32 nullifierHash
     );
 
     event ElectionClosed();
@@ -67,25 +67,35 @@ contract VotingSystem {
         Proof calldata proof,
         uint256[2] calldata C1,
         uint256[2] calldata C2,
-        uint256 nullifier
+        uint32[8] calldata nullifier
     ) external {
         uint256[12] memory publicInputs;
         publicInputs[0] = C1[0];
         publicInputs[1] = C1[1];
         publicInputs[2] = C2[0];
         publicInputs[3] = C2[1];
-        publicInputs[4] = nullifier;
+        publicInputs[4] = nullifier[0];
+        publicInputs[5] = nullifier[1];
+        publicInputs[6] = nullifier[2];
+        publicInputs[7] = nullifier[3];
+        publicInputs[8] = nullifier[4];
+        publicInputs[9] = nullifier[5];
+        publicInputs[10] = nullifier[6];
+        publicInputs[11] = nullifier[7];
+
+
 
 
         require(electionOpen, "Election closed");
-        require(!nullifierUsed[nullifier], "Nullifier already used");
+        bytes32 nullifierHash = keccak256(abi.encodePacked(nullifier)); //Lo ideal seria guardar el nullifier tal cual pero era complicado
+        require(!nullifierUsed[nullifierHash], "Nullifier already used");
 
         // ZKP de voto válido
         bool ok = voteVerifier.verifyTx(proof, publicInputs);
         require(ok, "Invalid vote proof");
 
         // Marcar nullifier
-        nullifierUsed[nullifier] = true;
+        nullifierUsed[nullifierHash] = true;
 
         // Acumular cifrados (homomorfico)
 
@@ -94,7 +104,7 @@ contract VotingSystem {
 
         numberOfVotes += 1;
 
-        emit VoteRegistered(C1, C2, nullifier);
+        emit VoteRegistered(C1, C2, nullifierHash);
     }
 
     // --------------------

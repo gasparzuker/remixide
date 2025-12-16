@@ -18,7 +18,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"TP FINAL/verifier.sol": "Pairing"
+			"TP FINAL/recountVerifier.sol": "Pairing"
 		},
 		"evmVersion": "prague",
 		"libraries": {},
@@ -32,11 +32,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"TP FINAL/verifier.sol": {
-			"keccak256": "0x32aa00aaab476a5a5cc10a06c52982d7e638687404d10504ff48d4924e90cf47",
+		"TP FINAL/recountVerifier.sol": {
+			"keccak256": "0x382f9a57f8455978cfce0bcf514921c571458f1d72d2eb45a612e87c8b9a48db",
 			"urls": [
-				"bzz-raw://f87444c6e280b2f6369000a3b6e5007403d5154898820ad4972c496c77185d19",
-				"dweb:/ipfs/QmS3dVxnSD28LHzbtdxYV65yf38h7LSE2tTGjSXeGLwNFg"
+				"bzz-raw://1423970a59ae6888967c646f6fee4673964ce82dec12b657beffbbcb773bcc7b",
+				"dweb:/ipfs/QmSVzDjR8CAs4gZbTgsSyvo32TT4nNBNh2YeYzvcLQTwSK"
 			]
 		}
 	},
