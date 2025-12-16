@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.31+commit.fd3a2265"
+		"version": "0.8.30+commit.73712a01"
 	},
 	"language": "Solidity",
 	"output": {
@@ -66,9 +66,9 @@
 						"type": "tuple"
 					},
 					{
-						"internalType": "uint256[4]",
+						"internalType": "uint256[12]",
 						"name": "input",
-						"type": "uint256[4]"
+						"type": "uint256[12]"
 					}
 				],
 				"name": "verifyTx",
@@ -96,9 +96,9 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"verifier.sol": "Verifier"
+			"TP FINAL/ZK Unificada/verifierRecuento.sol": "Verifier"
 		},
-		"evmVersion": "osaka",
+		"evmVersion": "prague",
 		"libraries": {},
 		"metadata": {
 			"bytecodeHash": "ipfs"
@@ -110,11 +110,11 @@
 		"remappings": []
 	},
 	"sources": {
-		"verifier.sol": {
-			"keccak256": "0xc42aefa93a53b4fe2ae7f8c8e0071f9c7bed77e8fe8ed5efa05493ad5ccdf36f",
+		"TP FINAL/ZK Unificada/verifierRecuento.sol": {
+			"keccak256": "0x346b3af7538e76c6d3427cddf6961657ddfee20f9711a60ba51737fa13ff78a5",
 			"urls": [
-				"bzz-raw://f13f2fa3ed9f80998155f0ddf07f9113bd717ebea02112073a6d3d51947b09d8",
-				"dweb:/ipfs/QmbM6eVwg8YPwzvLdmghAxRsdAd7peahWCswzdWm7wQkyv"
+				"bzz-raw://7b655f4ca3d66a6da6e6325e8e98e0bb6217b91462a5a2ba548a08ac81909a4c",
+				"dweb:/ipfs/QmRA23c9nt8VjY7qpTGjdXJpQEvS72Cn5zR6zdTqrWhrhJ"
 			]
 		}
 	},

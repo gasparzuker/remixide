@@ -6,7 +6,10 @@ import "utils/casts/u32_array_to_bool_array.zok" as cast;
 
 
 def main(
-    private u32[8] x, field[2] C1, field[2] C2, u32[8] result 
+    private u32[8] x, 
+    field[2] C1, 
+    field[2] C2, 
+    u32[8] result 
 ) {
 
     bool[256] scalarBits = cast(x); // clave privada como 256 bits
