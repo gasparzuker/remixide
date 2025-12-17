@@ -144,8 +144,8 @@ contract VotingSystem {
         inputs[7] = result[3];
         inputs[8] = result[4];
         inputs[9] = result[5];
-        inputs[8] = result[6];
-        inputs[9] = result[7];
+        inputs[10] = result[6];
+        inputs[11] = result[7];
         bool ok = recountVerifier.verifyTx(proof, inputs);
         require(ok, "Invalid recount proof");
 
